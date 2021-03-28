@@ -10,7 +10,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./hero-detail.component.css'],
 })
 export class HeroDetailComponent implements OnInit {
-  hero?: Hero;
+  hero!: Hero;
 
   constructor(
     private heroService: HeroService,
@@ -31,5 +31,9 @@ export class HeroDetailComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  save(): void {
+    this.heroService.updateHero(this.hero).subscribe(() => this.goBack());
   }
 }
